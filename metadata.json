@@ -1,0 +1,10 @@
+{
+  "name": "Remix KTP MBG Scanner Pro",
+  "description": "Advanced KTP Scanner with Geotagging and Data Validation for Field Operations.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
