@@ -3,7 +3,6 @@ import { KtpForm } from './components/KtpForm';
 import { KtpDetailModal } from './components/KtpDetailModal';
 import { FactualAreaSelector } from './components/FactualAreaSelector';
 import { LoginPage } from './components/LoginPage';
-import { GoogleAppsScriptModal } from './components/GoogleAppsScriptModal';
 import { HistoryFilter } from './components/HistoryFilter';
 import { HistoryStats } from './components/HistoryStats';
 import { extractKtpData } from './services/geminiService';
@@ -29,15 +28,7 @@ const App: React.FC = () => {
     }
   });
 
-  const [gasUrl, setGasUrl] = useState<string>(() => {
-    try {
-      return localStorage.getItem('pt_gas_url') || GAS_URL;
-    } catch {
-      return GAS_URL;
-    }
-  });
-
-  const [showGasModal, setShowGasModal] = useState<boolean>(false);
+  const gasUrl = GAS_URL;
   const [showLogoutConfirm, setShowLogoutConfirm] = useState<boolean>(false);
 
   const [state, setState] = useState<AppState>({
@@ -130,13 +121,6 @@ const App: React.FC = () => {
     } catch {}
     setIsAuthenticated(false);
     setShowLogoutConfirm(false);
-  };
-
-  const handleSaveGasUrl = (newUrl: string) => {
-    setGasUrl(newUrl);
-    try {
-      localStorage.setItem('pt_gas_url', newUrl);
-    } catch {}
   };
 
   useEffect(() => {
@@ -455,8 +439,7 @@ const App: React.FC = () => {
     return (
       <LoginPage 
         onLoginSuccess={handleLoginSuccess}
-        gasUrl={gasUrl || GAS_URL}
-        onSaveGasUrl={handleSaveGasUrl}
+        gasUrl={gasUrl}
       />
     );
   }
@@ -473,18 +456,8 @@ const App: React.FC = () => {
         </div>
         <div className="flex items-center gap-2">
           <button
-            onClick={() => setShowGasModal(true)}
-            className="text-[11px] font-bold text-gray-500 hover:text-gray-900 bg-gray-50 hover:bg-gray-100 px-3 py-1.5 rounded-xl transition flex items-center gap-1.5 border border-gray-200"
-            title="Pengaturan Integrasi Spreadsheet & Sandi"
-          >
-            <svg className="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-            </svg>
-            <span className="hidden sm:inline">Pengaturan Sheet</span>
-          </button>
-          <button
             onClick={handleLogoutClick}
-            className="text-[11px] font-bold text-red-600 hover:text-white hover:bg-red-600 bg-red-50 px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 border border-red-200 cursor-pointer active:scale-95 shadow-sm"
+            className="text-[11px] font-bold text-red-600 hover:text-white hover:bg-red-600 bg-red-50 px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 border border-red-200 cursor-pointer active:scale-95 shadow-sm"
             title="Keluar dari sesi"
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -508,7 +481,7 @@ const App: React.FC = () => {
               Keluar Sesi Petugas?
             </h3>
             <p className="text-xs text-gray-500 leading-relaxed mb-6">
-              Anda akan dialihkan ke halaman login. Anda dapat menguji kembali sandi yang terdaftar di Google Spreadsheet pada sheet <span className="font-bold text-gray-700 bg-gray-100 px-1.5 py-0.5 rounded">'sandi'</span> Kolom A.
+              Anda akan dialihkan ke halaman login otorisasi petugas. Silakan masukkan kata sandi yang telah terdaftar pada sistem basis data untuk masuk kembali.
             </p>
             <div className="flex gap-2.5 justify-center">
               <button
@@ -528,15 +501,6 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
-      )}
-
-      {showGasModal && (
-        <GoogleAppsScriptModal
-          isOpen={showGasModal}
-          onClose={() => setShowGasModal(false)}
-          gasUrl={gasUrl}
-          onSaveGasUrl={handleSaveGasUrl}
-        />
       )}
 
       {selectedDetail && (

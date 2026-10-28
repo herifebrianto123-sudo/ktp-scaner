@@ -40,7 +40,7 @@ function doGet(e) {
         return ContentService.createTextOutput(JSON.stringify({
           status: "error",
           valid: false,
-          message: "Sheet 'sandi' belum dibuat di Google Spreadsheet!"
+          message: "Tabel otorisasi 'sandi' belum dibuat pada basis data!"
         })).setMimeType(ContentService.MimeType.JSON);
       }
 
@@ -49,7 +49,7 @@ function doGet(e) {
         return ContentService.createTextOutput(JSON.stringify({
           status: "error",
           valid: false,
-          message: "Sheet 'sandi' masih kosong! Masukkan sandi di Kolom A."
+          message: "Tabel otorisasi 'sandi' masih kosong! Masukkan sandi di Kolom A."
         })).setMimeType(ContentService.MimeType.JSON);
       }
 

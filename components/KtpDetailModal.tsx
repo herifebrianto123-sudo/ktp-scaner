@@ -432,9 +432,9 @@ export const KtpDetailModal: React.FC<Props> = ({ record, data, onClose }) => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="px-2.5 py-1.5 bg-white/10 hover:bg-white/20 active:scale-95 text-blue-300 rounded-xl text-[10px] font-bold flex items-center gap-1 transition border border-white/10"
-                          title="Buka File di Google Drive"
+                          title="Buka Arsip Foto Digital"
                         >
-                          <span>Drive ↗</span>
+                          <span>Arsip Foto ↗</span>
                         </a>
                       )}
                     </div>
@@ -480,7 +480,7 @@ export const KtpDetailModal: React.FC<Props> = ({ record, data, onClose }) => {
                           <p className="text-xs font-bold text-gray-300">Foto KTP Belum Tersedia di Arsip</p>
                           <p className="text-[10px] text-gray-500 mt-1 max-w-xs">
                             {hasDriveLink
-                              ? "File tersimpan di Google Drive namun membutuhkan otorisasi akses."
+                              ? "Berkas foto tersimpan di Cloud Storage terenkripsi namun membutuhkan otorisasi akses."
                               : "Data dicatat tanpa lampiran foto fisik."}
                           </p>
                         </div>
@@ -492,7 +492,7 @@ export const KtpDetailModal: React.FC<Props> = ({ record, data, onClose }) => {
                             rel="noopener noreferrer"
                             className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition shadow-lg mt-1"
                           >
-                            Buka di Google Drive Tab Baru ↗
+                            Buka Arsip Foto di Tab Baru ↗
                           </a>
                         )}
                       </div>
@@ -574,7 +574,7 @@ export const KtpDetailModal: React.FC<Props> = ({ record, data, onClose }) => {
 
                   {hasDriveLink && (
                     <div className="flex justify-between items-center pt-2 border-t border-gray-200">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Google Drive</span>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Cloud Storage</span>
                       <a
                         href={activeRecord.linkFoto}
                         target="_blank"
@@ -600,7 +600,7 @@ export const KtpDetailModal: React.FC<Props> = ({ record, data, onClose }) => {
                       Mode Arsip Resmi (Hanya Lihat / Read-Only)
                     </h4>
                     <p className="text-[11px] text-gray-300 leading-relaxed font-medium">
-                      Data di halaman ini dilindungi dari perubahan tidak sengaja. Untuk mengedit atau memperbaiki data warga, silakan ubah langsung melalui Spreadsheet master oleh admin.
+                      Data di halaman ini dilindungi dari perubahan tidak sengaja. Untuk mengedit atau memperbaiki data warga, silakan ubah langsung melalui sistem basis data master oleh admin.
                     </p>
                   </div>
                 </div>
