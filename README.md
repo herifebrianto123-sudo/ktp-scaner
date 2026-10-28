@@ -9,9 +9,9 @@ Aplikasi Pemindai KTP Berbasis AI Gemini dengan Geotagging, Validasi Demografi, 
 - **Sistem Login Sandi**: Autentikasi sandi dari sheet `sandi` pada Google Spreadsheet.
 - **Riwayat & Export**: Terintegrasi langsung dengan Google Apps Script Web App.
 
-## Cara Publish Aplikasi Melalui GitHub
-Panduan lengkap untuk push kode ke GitHub dan mempublikasikannya secara online (Vercel, GitHub Pages, Render/Railway/Cloud Run) dapat dibaca di:
-👉 **[PANDUAN_PUBLISH_GITHUB.md](./PANDUAN_PUBLISH_GITHUB.md)**
+## Cara Publish Aplikasi (Sangat Mudah & Gratis)
+- 🚀 **Rekomendasi Utama (Paling Mudah & Cepat): [PANDUAN_PUBLISH_CLOUDFLARE.md](./PANDUAN_PUBLISH_CLOUDFLARE.md)**
+- 🌐 Panduan GitHub & Alternatif Lain (Vercel, GitHub Pages, Render): **[PANDUAN_PUBLISH_GITHUB.md](./PANDUAN_PUBLISH_GITHUB.md)**
 
 ## Menjalankan Proyek Secara Lokal
 ```bash
